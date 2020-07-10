@@ -1,5 +1,6 @@
 node {
     stage('CompileandPackage') {
+        checkout scm
         bat 'mvn clean package -DskipTests'
     }    
     stage('CodeAnalysis') {        

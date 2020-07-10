@@ -24,7 +24,7 @@ node {
       }        
    }
    stage('DeploytoTomcat') {
-      bat 'cp C:/JenkinsHomeDirectory/workspace/Multibranch-Pipeline/target/*.war C:/Tomcat8/webapps/'
+      bat 'cp C:/JenkinsHomeDirectory/workspace/Multibranch-Pipeline_master/target/*.war C:/Tomcat8/webapps/'
    } 
    stage('FunctionalTesting') {
       sleep 60

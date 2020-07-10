@@ -9,6 +9,6 @@ node {
         }        
     }
     stage('DeploytoTomcat') {
-        bat 'cp C:/JenkinsHomeDirectory/workspace/MyPipeline-Jenkinsfile/target/spring-project.war C:/Tomcat8/webapps/'
+        bat 'cp C:/JenkinsHomeDirectory/workspace/Multibranch-Pipeline_develop/target/spring-project.war C:/Tomcat8/webapps/'
     }    
 }

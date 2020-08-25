@@ -1,14 +1,18 @@
 node {
     stage('CompileandPackage') {
         checkout scm
-        bat 'mvn clean package -DskipTests'
+        sh 'mvn clean package -DskipTests'
     }    
-    stage('CodeAnalysis') {        
-        withSonarQubeEnv {
-            bat 'mvn sonar:sonar'
-        }        
-    }
+    stage('CodeAnalysis') {
+         steps {
+            script {
+               def scannerHome = tool 'SonarScanner';
+                  withSonarQubeEnv("SonarCloudServer") {
+                     sh "${tool("SonarScanner")}/bin/sonar-scanner"
+                  }
+            }
+        }
     stage('DeploytoTomcat') {
-        bat 'cp C:/JenkinsHomeDirectory/workspace/Multibranch-Pipeline_develop/target/spring-project.war C:/Tomcat8/webapps/'
+        sh label: '', script: 'cp $(pwd)/target/*.war /opt/tomcat/webapps/'
     }    
 }

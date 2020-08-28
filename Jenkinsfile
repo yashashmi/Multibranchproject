@@ -1,16 +1,18 @@
 node {
+   def mvnHome
+   def scannerHome
+   stage('Preparation') 
+      git 'https://gitlab.com/vishnukiranreddy4/myproject.git'          
+      mvnHome = tool 'MAVEN_HOME'
+	  scannerHome = tool 'SonarScanner'
+   }
     stage('CompileandPackage') {
         checkout scm
         sh 'mvn clean package -DskipTests'
     }    
     stage('CodeAnalysis') {
-         steps {
-            script {
-               def scannerHome = tool 'SonarScanner';
-                  withSonarQubeEnv("SonarCloud") {
+       withSonarQubeEnv("SonarCloud") {
                      sh "${tool("SonarScanner")}/bin/sonar-scanner"
-                }
-            }
         }
     }
     stage('DeploytoTomcat') {

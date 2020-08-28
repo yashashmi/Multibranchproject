@@ -18,4 +18,3 @@ node {
     stage('DeploytoTomcat') {
         sh label: '', script: 'cp $(pwd)/target/*.war /opt/tomcat/webapps/'
     }    
-}

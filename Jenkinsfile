@@ -4,7 +4,7 @@ node {
    mvnHome = tool 'MAVEN_HOME'
    scannerHome = tool 'SonarScanner'
     stage('CompileandPackage') {
-        checkout scm
+        git 'https://gitlab.com/vishnukiranreddy4/myproject.git'
         sh 'mvn clean package -DskipTests'
     }    
     stage('CodeAnalysis') {

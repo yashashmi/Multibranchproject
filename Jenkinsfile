@@ -3,7 +3,7 @@ node {
    def scannerHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://gitlab.com/vishnukiranreddy4/Multibranchproject.git'
+      git 'https://gitlab.com/marri_joshuadaniel/multibranchproject.git'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           

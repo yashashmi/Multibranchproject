@@ -4,7 +4,7 @@ node {
    mvnHome = tool 'MAVEN_HOME'
    scannerHome = tool 'SonarScanner'
     stage('CompileandPackage') {
-        git 'https://gitlab.com/marri_joshuadaniel/multibranchproject.git'
+        git 'https://github.com/yashashmi/Multibranchproject.git'
         sh 'mvn clean package -DskipTests'
     }    
     stage('CodeAnalysis') {

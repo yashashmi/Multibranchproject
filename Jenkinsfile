@@ -9,7 +9,7 @@ node {
         sh 'mvn clean package -DskipTests'
     }    
     stage('CodeAnalysis') {
-        withEnv(["MVN_HOME=$mvnHome"]) {
+       withEnv(["JAVA_HOME=$JavaHome"]){
        withSonarQubeEnv("SonarCloud") {
                      sh "${tool("SonarScanner")}/bin/sonar-scanner"
         }
